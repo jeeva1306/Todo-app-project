@@ -1,0 +1,14 @@
+input {
+  width: 80%;
+}
+
+span#switch {
+  color: navy;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+h4 {
+  font-family: stylish, cursive;
+  font-size: 30px;
+}

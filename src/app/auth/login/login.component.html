@@ -1,0 +1,85 @@
+<div
+  class="card"
+  style="margin: 50px; max-width: 1200px; min-width: 800px; border-radius: 30px"
+>
+  <img
+    class="card-img-top"
+    src="../../assets/Image/Todo.jpg"
+    alt="Todo"
+    style="opacity: 0.5"
+  />
+  <div class="card-img-overlay">
+    <h4 class="card-header" style="text-align: center">
+      Login
+      <span
+        id="switch"
+        style="float: right; font-size: 20px"
+        [routerLink]="'/signup'"
+        >Switch to Signup<span id="effect">&#xbb;</span></span
+      >
+    </h4>
+    <div class="card-body">
+      <div style="text-align: center;" *ngIf="isLoading">
+        <app-loading></app-loading>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" *ngIf="!isLoading">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="email_login">Email:</label>
+            <input
+              type="email"
+              id="email_login"
+              formControlName="email_login"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && g.email_login.errors }"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="g.email_login.errors?.required"
+                >Email is required.</span
+              >
+              <span *ngIf="g.email_login.errors?.email"
+                >Email must be a valid email address.</span
+              >
+            </div>
+          </div>
+
+          <div class="form-group col">
+            <label for="password_login">Password:</label>
+            <input
+              type="password"
+              id="password_login"
+              formControlName="password_login"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && g.password_login.errors }"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="g.password_login.errors?.required"
+                >Password is required.</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin: 10px">
+          <button
+            class="btn btn-primary"
+            style="margin-right: 5px"
+            type="submit"
+          >
+            Login
+          </button>
+          <button
+            class="btn btn-secondary"
+            style="margin-left: 5px"
+            type="reset"
+            (click)="onLoginReset()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+
+      <h2 *ngIf="isError">{{ error }}</h2>
+    </div>
+  </div>
+</div>

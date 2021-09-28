@@ -1,0 +1,11 @@
+h2 {
+  font-family: stylish;
+  font-size: 25px;
+  margin-left: 10px;
+  border-radius: 2px;
+}
+
+.active {
+  background-color: grey;
+  border-radius: 10px;
+}

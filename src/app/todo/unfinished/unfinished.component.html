@@ -1,0 +1,8 @@
+<div class="container">
+  <h4 *ngIf="show">Un-Completed Task:</h4>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let list of lists">
+      {{ list.description }}
+    </li>
+  </ul>
+</div>

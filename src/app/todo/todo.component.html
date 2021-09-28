@@ -1,0 +1,78 @@
+<app-navigation></app-navigation>
+
+<div class="card m-3">
+  <div class="card-header" style="text-align: center">Todo</div>
+  <div class="card-body">
+    <div id="new">
+      <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+        <div class="row">
+          <div class="form-group col-md-8">
+            <label for="description">Description:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              ngModel
+              name="description"
+              required
+            />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="dateTime">Due:</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              id="dateTime"
+              ngModel
+              name="dateTime"
+              required
+            />
+          </div>
+          <div class="col-md-1">
+            <button
+              class="btn btn-success"
+              style="position: relative; top: 23px"
+              type="submit"
+              [disabled]="todoForm.invalid"
+            >
+              &#x2713;
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-body">
+      <div id="list">
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let list of lists; let i = index"
+          >
+            <span style="display: inline-block; width: 65%; color:olivedrab"
+              >{{ i + 1 }} >> {{ list.description }} :</span
+            >
+            <span style="display: inline-block; width: 25%"
+              ><app-count-down-timer
+                [timeData]="list.dateTime"
+              ></app-count-down-timer
+            ></span>
+            <span
+              ><button class="btn btn-danger" (click)="close(i)">
+                &#x274C;
+              </button></span
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<footer class="bg-light text-center text-lg-start" style="position: fixed; bottom: 1px; width: 100%;">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-dark" href="https://mdbootstrap.com/">Dummy.com</a>
+  </div>
+</footer>

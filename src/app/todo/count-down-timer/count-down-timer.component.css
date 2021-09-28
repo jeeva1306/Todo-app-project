@@ -1,0 +1,8 @@
+div > #days,#hours,#minutes,#seconds{
+  color:darkred;
+  font-size: 20px;
+}
+
+div {
+  font-size: 15px;
+}
